@@ -1,0 +1,34 @@
+{% load static %}
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{% block title %}ConjugaRogue{% endblock %}</title>
+
+    <!-- load tailwind by static js file and configure it -->
+    <script src="{% static 'js/tailwind_css_3_3_5.min.js' %}"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+
+    <!-- load alpine js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- load htmx -->
+    <script src="https://unpkg.com/htmx.org@1.9.9" integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX" crossorigin="anonymous"></script>
+
+    <script defer src="https://friconix.com/cdn/friconix.js"> </script>
+</head>
+
+<body class="bg-slate-800 text-slate-100">
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

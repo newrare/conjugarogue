@@ -1,0 +1,17 @@
+{% load static %}
+
+<nav class="flex justify-between rounded-md bg-slate-900 border-2 border-dashed mx-8 my-4">
+    <div class="flex items-center gap-2">
+        <img src="{% static 'image/present.png' %}" alt="Logo" class="w-12 h-full" />
+
+        {% for heart in hearts %}
+            {% include "svg/heart.html" with color="red" %}
+        {% endfor %}
+    </div>
+
+    <div class="p-4 flex items-center gap-2">
+        {% include "svg/dice.html"          with color="blue" %}
+        {% include "svg/sword.html"         with color="blue" %}
+        {% include "svg/menu_tools.html"    with color="blue" %}
+    </div>
+</nav>

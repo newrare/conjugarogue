@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="flex items-center gap-4">
+        <img class="w-10 h-10 rounded-full" src="{% static Verb.image %}" alt="{{ Verb.verb }}">
+
+        <div class="font-medium dark:text-white">
+            <div>{{ Verb.name }}</div>
+            <div class="text-sm text-gray-500 dark:text-gray-400">{{ Verb.intro|safe }}</div>
+        </div>
+    </div>
+
+    <div class="flex items-center gap-4">
+        <div class="font-medium dark:text-white">
+            <div>Mr Present</div>
+            <div class="text-sm text-gray-500 dark:text-gray-400">{{ attack|safe }}</div>
+        </div>
+        <img class="w-10 h-10 rounded-full" src="{% static 'image/present.png' %}" alt="">
+    </div>
+
+    {% for answer in Verb.present_answers %}
+        <button
+            class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
+
+            hx-get="{% url 'check' attack_index answer %}"
+            hx-target="#message_result"
+            hx-swap="innerHTML"
+        >
+            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                {{ answer }}
+            </span>
+        </button>
+    {% endfor %}
+
+    <div id="message_result"></div>
+
+    <div class="block max-w-sm p-6 bg-gray-800 border border-gray-200 rounded-lg shadow flex items-center gap-2">
+        {% for heart in hearts %}
+            <svg class="w-6 h-6 text-red-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                <path d="M17.947 2.053a5.209 5.209 0 0 0-3.793-1.53A6.414 6.414 0 0 0 10 2.311 6.482 6.482 0 0 0 5.824.5a5.2 5.2 0 0 0-3.8 1.521c-1.915 1.916-2.315 5.392.625 8.333l7 7a.5.5 0 0 0 .708 0l7-7a6.6 6.6 0 0 0 2.123-4.508 5.179 5.179 0 0 0-1.533-3.793Z"/>
+            </svg>
+        {% endfor %}
+    </div>
+
+    <a
+        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
+        href="{% url 'fight' %}"
+    >
+        Suivant
+    </a>
+{% endblock %}

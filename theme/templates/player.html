@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
+            <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">ConjugaRogue</h2>
+                <p class="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Choisis ton personnage !!!</p>
+            </div>
+
+            <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
+                {% include "components/player_info.html" with
+                    image="image/past.png"
+                    name="Père passé"
+                    capacity="Peut se souvenir d'action précédante"
+                    description="Cet ancien homme de prière repense avec émotion à sa ve d'avant. Ne vous fiez pas à son apparence car ce dernier a plus d'un tour dans son sac."
+                %}
+
+                {% include "components/player_info.html" with
+                    image="image/present.png"
+                    name="Mr Present"
+                    capacity="Spécialiste dans les attaques directes"
+                    description="Ce héro aime l'instant imédiat et le chocolat. Toujours volontaire ce personnage est équilibré."
+                %}
+
+                {% include "components/player_info.html" with
+                    image="image/futur.png"
+                    name="Miss Futur"
+                    capacity="Elle peut prévoir plusieurs attaques à l'avance"
+                    description="Tournée constament vers l'avenir, cette magicienne utilisera ces capacités pour anticiper les épreuves qui lui seront confiées."
+                %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

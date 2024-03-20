@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h2 class="text-4xl font-bold dark:text-white">Player</h2>
+
+    la
+    <i class="fi-hwsuxl-question-mark"></i>
+    <i class="fi-hwsuxl-minecraft-sword"></i>
+    ici
+
+    <ul>
+        {% for player in players %}
+            <li>{{ player.name }} - {{ player.email }}</li>
+        {% endfor %}
+    </ul>
+
+    <br /><br />
+
+    <h2 class="text-4xl font-bold dark:text-white">Punchline Arriver</h2>
+
+    <div id="punchline"></div>
+
+    <br />
+
+    <button
+        type="button"
+        class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+
+        hx-get="{% url 'sentence' %}"
+        hx-push-url="true"
+        hx-target="#punchline"
+        hx-swap="innerHTML"
+        hx-indicator="#content-loader"
+    >
+        Get punchline
+    </button>
+{% endblock %}
