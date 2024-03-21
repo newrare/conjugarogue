@@ -93,7 +93,7 @@ USE_I18N        = True
 USE_TZ          = True
 
 #static files
-STATIC_URL = 'static/'
+STATIC_URL = 'theme/static/'
 
 #default auto field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
