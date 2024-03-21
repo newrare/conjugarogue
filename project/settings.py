@@ -25,7 +25,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'theme',
-    'simple_components',
     'player',
     #'livereload',
 ]
