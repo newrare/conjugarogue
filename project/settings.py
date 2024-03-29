@@ -1,6 +1,7 @@
 #lib
 from pathlib import Path
 import environ
+import os
 
 #load env file
 env = environ.Env()
@@ -13,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 #SECRET_KEY      = env('SECRET_KEY')
 SECRET_KEY      = 'django-insecure-=cldztbc4jg&xl0!x673!*v2_=p$$eu)=7*f#d0#zs$44xx-h^'
 DEBUG           = True
-ALLOWED_HOSTS   = ['127.0.0.1', '.vercel.app', 'project.app']
+ALLOWED_HOSTS   = ['127.0.0.1', '.vercel.app', 'project.app', 'localhost', '.now.sh']
 
 
 #applications
@@ -93,8 +94,9 @@ USE_I18N        = True
 USE_TZ          = True
 
 #static files
-STATIC_URL  = 'theme/static'
-STATIC_ROOT = 'theme/static'
+STATICFILES_DIRS    = os.path.join(BASE_DIR, 'theme/static'),
+STATIC_ROOT         = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+STATIC_URL          = '/static/'
 
 #default auto field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
